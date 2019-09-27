@@ -29,5 +29,6 @@ main() {
 
     // initialization
     SerialDigits = 8;
+    SerialLimit = Math.pow(10, copy(SerialDigits)); // with copy the value of an identifier is able to equal to that of another identifier without transferring the ownership
     return;
 }
