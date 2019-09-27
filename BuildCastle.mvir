@@ -1,18 +1,33 @@
 // In a module, we can define Struct, Resource and Procedure.
 // Like a smart contract in Ethereum.
-// Modules can be imported either with address + module name or from same file wit module name
+// Modules can be imported either with address + module name or from same file with module name
 // e.g import 0x0.LibraCoin or import Transaction.LibraCoin
 modules:
 module BuildCastle {
+    // possible types: resource, struct
+}
 
+module Math {
+    // params: base x and the exponent n of type u64, returns result of opeartion as u64
+    public pow(x: u64, n: u64) : u64 {
+        return 1;
+    }
 }
 
 script:
 import Transaction.BuildCastle;
+import Transaction.Math;
 // a one-time execution piece of code goes into the transaction script with main() as its entry point
 // main() is a special kind of procedure.
-// Procedures need to end with a return staement
-// ordinary procedures are put into modules. imported in the script section and called from within main()
+// Procedures need to end with a return statement.
+// Ordinary procedures are put into modules, imported in the script section and called from within main().
 main() {
+    // bindings (of ownership) always first or compiler throws
+    // possible types: bool, address, bytearray, u64
+    let SerialDigits: u64;
+    let SerialLimit: u64;
+
+    // initialization
+    SerialDigits = 8;
     return;
 }
