@@ -1,0 +1,18 @@
+// In a module, we can define Struct, Resource and Procedure.
+// Like a smart contract in Ethereum.
+// Modules can be imported either with address + module name or from same file wit module name
+// e.g import 0x0.LibraCoin or import Transaction.LibraCoin
+modules:
+module BuildCastle {
+
+}
+
+script:
+import Transaction.BuildCastle;
+// a one-time execution piece of code goes into the transaction script with main() as its entry point
+// main() is a special kind of procedure.
+// Procedures need to end with a return staement
+// ordinary procedures are put into modules. imported in the script section and called from within main()
+main() {
+    return;
+}
