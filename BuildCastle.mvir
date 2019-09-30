@@ -21,6 +21,25 @@ module BuildCastle {
         SerialNum = Math.myrand(Block.get_current_height()) % (copy(SerialLimit) - copy(SerialLimit) / 10) + copy(SerialLimit) / 10;
         return move(SerialNum);
     }
+    // determine race of castle
+    public racial_judgement(SerialNum: u64): u64 * u64 {
+        let race: u64;
+        race = ((move(SerialNum) / 10) % 10) % 5;
+        if (copy(race) == 0) {
+            return 6, 6;
+        }
+        if (copy(race) == 1) {
+            return 8, 3;
+        }
+        if (copy(race) == 2) {
+           return 3, 8;
+        }
+        if (copy(race) == 3) {
+           return 7, 4;
+        } else {
+            return 4, 7;
+        }
+    }
 }
 
 module Math {
