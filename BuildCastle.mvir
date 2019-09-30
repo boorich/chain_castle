@@ -5,6 +5,13 @@
 modules:
 module BuildCastle {
     // possible types: resource, struct
+    struct Castle { 
+        name: bytearray,
+        SerialNum: u64,
+        level: u64,
+        economic: u64,
+        military: u64
+    }
 }
 
 module Math {
