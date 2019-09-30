@@ -10,7 +10,17 @@ module BuildCastle {
 module Math {
     // params: base x and the exponent n of type u64, returns result of opeartion as u64
     public pow(x: u64, n: u64) : u64 {
+        if (copy(n) == 0) { // this ends recursion since something to the power of 0 is always 1
         return 1;
+        }
+        if (copy(n) == 1) { // this moves ownership over the value x to calling function when recursion ends
+        return move(x);
+        }
+        if (copy(n) % 2 == 0) { // for even numbers do this
+            return Self.pow(copy(x) * copy(x), copy(n) / 2);
+        } else { // for odd numbers do that
+            return Self.pow(copy(x) * copy(x), copy(n) / 2) * copy(x);
+        }
     }
 }
 
