@@ -40,6 +40,19 @@ module BuildCastle {
             return 4, 7;
         }
     }
+    // this function returns an initialized castle struct when called
+    public newCastle(_name: bytearray, _SerialNum: u64) : Self.Castle {
+        let a: u64;
+        let b: u64;
+        a, b = Self.racial_judgement(copy(_SerialNum));
+        return Castle {
+            name: move(_name),
+            SerialNum: copy(_SerialNum),
+            level: 1,
+            economic: move(a),
+            military: move(b)
+        }; // the semicolon makes it a return statement
+    }
 }
 
 module Math {
@@ -77,10 +90,12 @@ main() {
     let SerialDigits: u64;
     let SerialLimit: u64;
     let SerialNum: u64;
+    let castle: BuildCastle.Castle; // struct of type castle
 
     // initialization
     SerialDigits = 8;
     SerialLimit = Math.pow(10, copy(SerialDigits)); // with copy the value of an identifier is able to equal to that of another identifier without transferring the ownership
     SerialNum = BuildCastle.generateSerial(copy(SerialLimit));
+    castle = BuildCastle.newCastle(move(name), move(SerialNum));
     return;
 }
